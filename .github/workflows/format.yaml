@@ -51,4 +51,5 @@ jobs:
         if: ${{ env.changed }} == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
+          base: main
           branch: auto/clang-format
