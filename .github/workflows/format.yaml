@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: write
+  pull-requests: write
 
 jobs:
   format-code:
@@ -23,3 +23,29 @@ jobs:
           clang-format -i src/*.cpp
           clang-format -i include/*.h
           clang-format -i tests/cpp/*.cpp
+
+      - name: Check for changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git add .
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            echo "changed=false" >> $GITHUB_ENV
+          else
+            echo "Changes detected."
+            echo "changed=true" >> $GITHUB_ENV
+          fi
+
+      - name: Create new branch and commit changes
+        if: $changed == 'true'
+        run: |
+          BRANCH_NAME=auto/clang-format
+          git checkout -b $BRANCH_NAME || git checkout $BRANCH_NAME
+          git commit -m "Apply clang-format"
+          git push -u origin $BRANCH_NAME
+
+      - name: Create pull request
+        if: $changed == 'true'
+        uses: peter-evans/create-pull-request@v6
