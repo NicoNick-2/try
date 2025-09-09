@@ -5,8 +5,7 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: true
-  pull-requests: true
+  contents: write
 
 jobs:
   format-code:
