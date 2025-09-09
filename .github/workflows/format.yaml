@@ -48,7 +48,6 @@ jobs:
           git push -u origin $BRANCH_NAME
 
       - name: Create pull request
-        if: ${{ env.changed }} == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
           base: main
