@@ -50,3 +50,5 @@ jobs:
       - name: Create pull request
         if: ${{ env.changed }} == 'true'
         uses: peter-evans/create-pull-request@v6
+        with:
+          branch: auto/clang-format
