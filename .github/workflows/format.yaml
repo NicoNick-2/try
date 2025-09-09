@@ -39,7 +39,7 @@ jobs:
           fi
 
       - name: Create new branch and commit changes
-        if: $changed == 'true'
+        if: ${{ env.changed }} == 'true'
         run: |
           BRANCH_NAME=auto/clang-format
           git checkout -b $BRANCH_NAME || git checkout $BRANCH_NAME
@@ -47,5 +47,5 @@ jobs:
           git push -u origin $BRANCH_NAME
 
       - name: Create pull request
-        if: $changed == 'true'
+        if: ${{ changed }} == 'true'
         uses: peter-evans/create-pull-request@v6
