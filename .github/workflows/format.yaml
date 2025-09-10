@@ -35,5 +35,5 @@ jobs:
       - name: Create pull request
         uses: peter-evans/create-pull-request@v6
         with:
-          base: ${{ env.BRANCH_NAME }}
+          base: main
           branch: auto/clang-format
