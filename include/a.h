@@ -1,3 +1,3 @@
-    #pragma once
+#pragma once
 
- const  int PI = 3;
+const int PI = 3;
