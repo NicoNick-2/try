@@ -3,13 +3,21 @@ name: call format
 on:
   push:
 
+env:
+  BRANCH_NAME: ${{ github.ref_head || github.ref }}
+
 jobs:
   call:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ env.BRANCH_NAME }}
+    
       - name: code format check
         uses: ./.github/workflows/test.yaml
         with:
           language: cpp
-          branch: lasttry
+          branch: ${{ env.BRANCH_NAME }}
