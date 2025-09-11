@@ -2,13 +2,21 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    branches: [main ]
+    branches: [ main ]
+
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
 jobs:
   linting:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+        with:
+          ref: $ {{ env.BRANCH_NAME }}
+
       - name: Install clang-format
         run: sudo apt-get update && sudo apt-get install -y clang-format
 
