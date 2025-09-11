@@ -4,9 +4,11 @@ on:
   workflow_call:
     inputs:
       language:
+        description: The language to run the format checker for
         required: true
         type: string
       branch:
+        description: The branch to check
         required: true
         type: string
 
