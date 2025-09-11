@@ -1,24 +1,29 @@
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+name: Check Code Formatting
 
-env:
-  BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+on:
+  workflow_call:
+    inputs:
+      language:
+        required: true
+        type: string
+      branch:
+        required: true
+        type: string
 
 jobs:
-  linting:
+  format-check:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
         with:
-          ref: ${{ env.BRANCH_NAME }}
+          ref: ${{ inputs.branch }}
 
-      - name: Install clang-format
+      - name: Install formatter [C++]
+        if: ${{ inputs.language }} == 'cpp'
         run: sudo apt-get update && sudo apt-get install -y clang-format
 
-      - name: Run clang-format
+      - name: Run formatter [C++]
+        if: ${{ inputs.language }} == 'cpp'
         run: clang-format --dry-run --Werror src/*.cpp include/*.h tests/cpp/*.cpp
