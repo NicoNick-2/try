@@ -22,10 +22,10 @@ jobs:
           ref: ${{ inputs.branch }}
 
       - name: Install linter [C++]
-        if: ${{ inputs.language == cpp}}
+        if: ${{ inputs.language }} == 'cpp'
         run: sudo apt-get update && sudo apt-get install -y clang-tidy
 
       - name: Run linter [C++]
-        if: ${{ inputs.language == cpp }}
+        if: ${{ inputs.language }} == 'cpp'
         run: clang-tidy src/*.cpp tests/cpp/*.cpp
         
