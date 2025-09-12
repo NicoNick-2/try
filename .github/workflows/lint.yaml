@@ -3,7 +3,8 @@ name: Lint code
 on:
   workflow_call:
     inputs:
-      description: The language to run the linter for
+      language:
+        description: The language to run the linter for
         required: true
         type: string
       branch:
