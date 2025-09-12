@@ -9,3 +9,9 @@ jobs:
     with:
       language: cpp
       branch: ${{ github.ref_head || github.ref }}
+
+  code-lint:
+    uses: ./.github/workflows/lint.yaml
+    with: 
+      language: cpp
+      branch: ${{ github.ref_head || github.ref }}
