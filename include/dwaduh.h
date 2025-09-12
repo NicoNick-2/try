@@ -1,4 +1,3 @@
-         #pragma once
+#pragma once
 
-
- int a;
+int a;
