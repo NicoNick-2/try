@@ -16,16 +16,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - Code checkout
+      - name: Code checkout
         uses: actions/checkout@v5
         with:
           ref: ${{ inputs.branch }}
 
-      - Install linter [C++]
+      - name: Install linter [C++]
         if: ${{ inputs.language == cpp}}
         run: sudo apt-get update && sudo apt-get install -y clang-tidy
 
-      - Run linter [C++]
+      - name: Run linter [C++]
         if: ${{ inputs.language == cpp }}
         run: clang-tidy src/*.cpp tests/cpp/*.cpp
         
