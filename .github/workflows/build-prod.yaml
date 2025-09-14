@@ -1,0 +1,26 @@
+name: Build Prod
+
+on:
+  workflow_call:
+    inputs:
+      branch:
+        description: The branch to lint
+        required: true
+        type: string
+
+jobs:
+  build-prod:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ inputs.branch }}
+
+      - name: Build
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          cmake --build .

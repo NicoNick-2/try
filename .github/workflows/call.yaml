@@ -15,3 +15,8 @@ jobs:
     with: 
       language: cpp
       branch: ${{ github.ref_head || github.ref }}
+
+  build-prod:
+    uses: ./.github/workflows/build-prod.yaml
+    with:
+      branch: ${{ github.ref_head || github.ref }}
