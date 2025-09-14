@@ -1,0 +1,11 @@
+read_ints.ReadCorrectly 1 0.0342114
+read_ints.ThrowIfVectorNotEmpty 1 0.0350033
+read_ints.ThrowIfFileMissing 1 0.0346918
+read_ints.ThrowIfInvalidInteger 1 0.0363135
+read_ints.ThrowIfNotEnoughLines 1 0.0353012
+read_int_pairs.ReadCorrectly 1 0.0313729
+read_int_pairs.ThrowIfVectorNotEmpty 1 0.0329279
+read_int_pairs.ThrowIfFileMissing 1 0.033684
+read_int_pairs.ThrowIfInvalidIntegerPair 1 0.0382939
+read_int_pairs.ThrowIfNotEnoughLines 1 0.0354421
+---
