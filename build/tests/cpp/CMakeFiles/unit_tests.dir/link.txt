@@ -1,0 +1,1 @@
+/usr/bin/c++ -fsanitize=address,undefined,leak -fno-omit-frame-pointer CMakeFiles/unit_tests.dir/input_tests.cpp.o -o unit_tests  ../../libinput_lib.a /usr/lib/x86_64-linux-gnu/libgtest_main.a -lpthread /usr/lib/x86_64-linux-gnu/libgtest.a 
