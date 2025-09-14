@@ -31,7 +31,7 @@ jobs:
           ls
           cd ..
           ls
-          cp build/compiler_commands.json .
+          cp build/compile_commands.json .
 
       - name: Install linter [C++]
         if: ${{ inputs.language }} == 'cpp'
