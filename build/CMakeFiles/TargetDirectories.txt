@@ -1,8 +1,0 @@
-/home/nico/code-journeys/scotland-yard-solver/build/CMakeFiles/input_lib.dir
-/home/nico/code-journeys/scotland-yard-solver/build/CMakeFiles/test.dir
-/home/nico/code-journeys/scotland-yard-solver/build/CMakeFiles/edit_cache.dir
-/home/nico/code-journeys/scotland-yard-solver/build/CMakeFiles/rebuild_cache.dir
-/home/nico/code-journeys/scotland-yard-solver/build/tests/cpp/CMakeFiles/unit_tests.dir
-/home/nico/code-journeys/scotland-yard-solver/build/tests/cpp/CMakeFiles/test.dir
-/home/nico/code-journeys/scotland-yard-solver/build/tests/cpp/CMakeFiles/edit_cache.dir
-/home/nico/code-journeys/scotland-yard-solver/build/tests/cpp/CMakeFiles/rebuild_cache.dir
