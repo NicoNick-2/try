@@ -22,7 +22,8 @@ jobs:
         with:
           ref: ${{ inputs.branch }}
 
-      - name: Build tests
+      - name: Build tests [C++]
+        if: ${{ inputs.language }} == 'cpp'
         run: |
           mkdir build
           cd build
@@ -30,5 +31,6 @@ jobs:
           cmake --build .
           cd ..
 
-      - name: Run tests
+      - name: Run tests [C++]
+        if: ${{ inputs.language }} == 'cpp'
         run: ctest

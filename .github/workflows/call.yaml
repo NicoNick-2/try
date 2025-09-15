@@ -2,7 +2,7 @@ name: call format
 
 on:
   push:
-  
+
 jobs:
   format-check:
     uses: ./.github/workflows/check-format.yaml
@@ -12,11 +12,17 @@ jobs:
 
   code-lint:
     uses: ./.github/workflows/lint-code.yaml
-    with: 
+    with:
       language: cpp
       branch: ${{ github.ref_head || github.ref }}
 
   build-prod:
     uses: ./.github/workflows/build-prod.yaml
     with:
+      branch: ${{ github.ref_head || github.ref }}
+
+  run-tests:
+    uses: ./.github/workflows/tests.yaml
+    with:
+      language: cpp
       branch: ${{ github.ref_head || github.ref }}
