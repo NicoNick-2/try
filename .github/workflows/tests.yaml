@@ -27,10 +27,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: build
+          path: ./build/
 
       - name: Check
         if: ${{ inputs.language }} == 'cpp'
-        run: ls && ls /build
+        run: ls && ls ./build/
 
       - name: Run tests [C++]
         if: ${{ inputs.language }} == 'cpp'
