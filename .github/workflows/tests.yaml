@@ -33,6 +33,10 @@ jobs:
         if: ${{ inputs.language }} == 'cpp'
         run: ls && ls ./build/
 
+      - name: Untar files [C++]
+        if: ${{ inputs.language }} == 'cpp'
+        run: tar -xvf ./build/build.tar
+
       - name: Run tests [C++]
         if: ${{ inputs.language }} == 'cpp'
         run: cd build && ctest
