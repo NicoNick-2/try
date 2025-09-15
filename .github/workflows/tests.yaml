@@ -1,0 +1,42 @@
+name: Run tests
+
+on:
+  workflow_call:
+    inputs:
+      language:
+        description: The language to run the format checker for
+        required: true
+        type: string
+      branch:
+        description: The branch to check
+        required: true
+        type: string
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkcout code
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ inputs.branch }}
+
+      - name: Download build artifacts [C++]
+        if: ${{ inputs.language }} == 'cpp'
+        uses: actions/download-artifact@v4
+        with:
+          name: build
+          path: ./build/
+
+      - name: Check
+        if: ${{ inputs.language }} == 'cpp'
+        run: ls && ls ./build/
+
+      - name: Untar files [C++]
+        if: ${{ inputs.language }} == 'cpp'
+        run: tar -xvf ./build/build.tar
+
+      - name: Run tests [C++]
+        if: ${{ inputs.language }} == 'cpp'
+        run: cd build && ctest

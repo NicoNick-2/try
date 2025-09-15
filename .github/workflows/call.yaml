@@ -1,0 +1,33 @@
+name: call format
+
+on:
+  push:
+
+env:
+  BRANCH: ${{ github.ref_head || github.ref }}
+
+jobs:
+  format-check:
+    uses: ./.github/workflows/check-format.yaml
+    with:
+      language: cpp
+      branch: ${{ github.ref_head || github.ref }}
+
+  code-lint:
+    uses: ./.github/workflows/lint-code.yaml
+    with:
+      language: cpp
+      branch: ${{ github.ref_head || github.ref }}
+
+  build-code:
+    uses: ./.github/workflows/build-code.yaml
+    with:
+      language: cpp
+      branch: ${{ github.ref_name || github.ref }}
+
+  run-tests:
+    needs: build-code
+    uses: ./.github/workflows/tests.yaml
+    with:
+      language: cpp
+      branch: ${{ github.ref_head || github.ref }}
