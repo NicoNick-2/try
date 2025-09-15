@@ -19,12 +19,14 @@ jobs:
       language: cpp
       branch: ${{ github.ref_head || github.ref }}
 
-  build-prod:
-    uses: ./.github/workflows/build-prod.yaml
+  build-code:
+    uses: ./.github/workflows/build-code.yaml
     with:
-      branch: ${{ github.ref_head || github.ref }}
+      language: cpp
+      branch: ${{ github.ref_name || github.ref }}
 
   run-tests:
+    needs: build-code
     uses: ./.github/workflows/tests.yaml
     with:
       language: cpp
