@@ -22,6 +22,10 @@ jobs:
         with:
           ref: ${{ inputs.branch }}
 
+      - name: Set up env [C++]
+        if: ${{ inputs.language }} == 'cpp'
+        run: sudo apt-get update && sudo apt-get libgtest-dev
+
       - name: Build tests [C++]
         if: ${{ inputs.language }} == 'cpp'
         run: |
