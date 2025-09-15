@@ -184,3 +184,7 @@ TEST(read_int_pairs, ThrowIfNotEnoughLines) {
 
     delete_file(file);
 }
+
+TEST(try, Try) {
+    EXPECT_EQ(2, 3);
+}
