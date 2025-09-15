@@ -11,13 +11,13 @@ jobs:
     uses: ./.github/workflows/check-format.yaml
     with:
       language: cpp
-      branch: ${{ env.BRANCH }}
+      branch: ${{ github.ref_head || github.ref }}
 
   code-lint:
     uses: ./.github/workflows/lint-code.yaml
     with:
       language: cpp
-      branch: ${{ env.BRANCH }}
+      branch: ${{ github.ref_head || github.ref }}
 
   build-prod:
     uses: ./.github/workflows/build-prod.yaml
