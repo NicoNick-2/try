@@ -24,7 +24,7 @@ jobs:
 
       - name: Set up env [C++]
         if: ${{ inputs.language }} == 'cpp'
-        run: sudo apt-get update && sudo apt-get libgtest-dev
+        run: sudo apt-get update && sudo apt-get install libgtest-dev
 
       - name: Build tests [C++]
         if: ${{ inputs.language }} == 'cpp'
